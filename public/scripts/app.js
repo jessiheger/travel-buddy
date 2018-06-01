@@ -4,13 +4,15 @@ mapboxgl.accessToken='pk.eyJ1IjoiamVzc2loZWdlciIsImEiOiJjamh3ZGNhNG8wNjNmM3JvYnA
 $(document).ready(function() {
   $('#createPost').on('submit', function(e) {
     e.preventDefault();
-    console.log('posting');
+    let newCity = $('#cityCreate').val().toLowerCase();
     $.ajax({
       method:   'POST'
       ,url:     '/create'
       ,data:    $(this).serialize()
       ,success: onSuccess
       ,error:   onError
+    }).done(function(data) {
+      window.location = `/${newCity}`
     });
   });
 });
