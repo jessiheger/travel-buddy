@@ -28,10 +28,17 @@ app.use(morgan('tiny'));
 // app.use(passport.session());
 // app.use(express.static('public'));
 
-
 /////////////////////ROUTES///////////////////////
 app.get('/', function(req,res) {
-	res.render('search', {currentPage: 'Search'});
+	res.render('welcome');
+})
+
+app.get('/create', function(req,res) {
+	res.render('create');
+})
+
+app.get('/results', function(req,res) {
+	res.render('results', {results: 'results'});
 })
 
 // app.use('/auth', require('./routes/auth'));
