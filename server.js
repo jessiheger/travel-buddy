@@ -29,14 +29,16 @@ app.get('/', function(req,res) {
 app.get('/create', function(req,res) {
 	res.render('create');
 })
-	
+	//check if other empty
 app.post('/create', function(req, res) {
 	let activities = [];
 	let newPost = new Post();
+	let city = req.body.city.toLowerCase()
+	// city.replace(/' '/g, '');
 	activities.push(req.body.activityType);
-	activities.push(req.body.otherActivity);
+	if (req.body.otherActivity !== '') { activities.push(req.body.otherActivity); }
 	newPost.firstName = req.body.firstName;
-	newPost.city = req.body.city.toLowerCase();
+	newPost.city = city;
 	newPost.activityType = activities;
 	newPost.activityDescription = req.body.activityDescription;
 	newPost.methodOfContact = req.body.methodOfContact;
