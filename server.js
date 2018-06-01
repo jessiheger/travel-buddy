@@ -29,15 +29,37 @@ app.get('/', function(req,res) {
 app.get('/create', function(req,res) {
 	res.render('create');
 })
+	
+app.post('/create', function(req, res) {
+	let activities = [];
+	let newPost = new Post();
+	activities.push(req.body.activityType);
+	activities.push(req.body.otherActivity);
+	newPost.firstName = req.body.firstName;
+	newPost.city = req.body.city.toLowerCase();
+	newPost.activityType = activities;
+	newPost.activityDescription = req.body.activityDescription;
+	newPost.methodOfContact = req.body.methodOfContact;
+	newPost.language = req.body.language;
+	newPost.ageRange = req.body.ageRange;
+	newPost.startDate = req.body.startDate;
+	newPost.endDate = req.body.endDate;
+	newPost.save(function(err) {
+		if (err) {
+			console.log('######## error saving post to db:\n', err);
+			res.send('error posting');
+		}
+	});
+	res.send(newPost);
+})
 
 app.get('/:location', function(req,res) {
-	console.log(req.params.location);
+	// console.log(req.params.location);
 	Post.find({'city': req.params.location}, function(err, posts) {
 		if (err) { 
 			console.log('error getting posts for', req.params.location, '\n' + err)
 			res.render('results', {posts: '', location: req.params.location});
 		}
-		console.log(posts, typeof posts);
 		res.render('results', {posts: posts, location: req.params.location});
 	});
 });
