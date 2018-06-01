@@ -9,3 +9,27 @@ body {
     width:80%; 
     height:80%;
 }
+
+.jumbotron {
+    background-image: url("../images/visit-reykjavik.jpg");
+}
+
+#title {
+    font-size: 50px;
+    font-family: 'Shadows Into Light', cursive;
+
+}
+
+.results {
+    border-width: 5px;
+    border-color: black;
+    border-radius: 10px;
+    background-color: #cdf7d4;
+    padding: 5px;
+    margin-bottom: 10px;
+}
+
+ul {
+    list-style-type: none;
+    line-height: 10px;
+}

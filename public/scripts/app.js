@@ -65,15 +65,7 @@ map.on("load", function () {
 $('#citySearch').on('submit', function(e) {
   e.preventDefault();
   let newCity = $('#cityInput').val().toLowerCase();
-  let data = {city: newCity};
-  console.log("newCity is", newCity);
-  $.ajax({
-    method: 'GET',
-    url: `/${newCity}`,
-    data: data
-  }).done(function(data) {
-    window.location = `/${newCity}`
-  });
+  window.location = `/${newCity}`
 });
 
 function onError(e) {
