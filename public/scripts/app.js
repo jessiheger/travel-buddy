@@ -1,14 +1,13 @@
 console.log("Sanity Check: JS is working!");
 // import mapboxgl from 'mapbox-gl';
-
 mapboxgl.accessToken='pk.eyJ1IjoiamVzc2loZWdlciIsImEiOiJjamh3ZGNhNG8wNjNmM3JvYnA3ZmtvNTAwIn0.jauifVcTS4_CQcsP9uBiyw';
 
 /* Map: This represents the map on the page. */
 var map = new mapboxgl.Map({
   container: "map",
   style: "mapbox://styles/mapbox/streets-v10",
-  zoom:2.1,
-  center: [-15.21703,59.22386]
+  zoom:1.5,
+  center: [-24.712,29.063]
 });
 
 map.on("load", function () {
@@ -25,8 +24,24 @@ map.on("load", function () {
           type: "geojson",
           data: {
             type: "FeatureCollection",
-            features:[{"type":"Feature","geometry":{"type":"Point","coordinates":["-21.8174","64.1265"]}}]}
-        },
+            features:[
+              {"type":"Feature",
+              "geometry":{
+                "type":"Point",
+                "coordinates":["-21.8174","64.1265"]
+              }},
+              {"type":"Feature",
+              "geometry":{
+                "type":"Point",
+                "coordinates":["55.2708","25.2048"]
+              }},
+              {"type":"Feature",
+              "geometry":{
+                "type":"Point",
+                "coordinates":["-122.3321","47.6062"]
+              }},
+              ]}
+          },
         layout: {
           "icon-image": "custom-marker",
         }
@@ -34,6 +49,19 @@ map.on("load", function () {
     });
 });
 
+$('#citySearch').on('submit', function(e) {
+  e.preventDefault();
+  let newCity = $('#cityInput').val().toLowerCase();
+  let data = {city: newCity};
+  console.log("newCity is", newCity);
+  $.ajax({
+    method: 'GET',
+    url: `/${newCity}`,
+    data: data
+  }).done(function(data) {
+    window.location = `/${newCity}`
+  });
+});
 
 
 // $(document).ready(function() {
