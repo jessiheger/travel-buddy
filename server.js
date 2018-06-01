@@ -26,7 +26,7 @@ app.use(morgan('tiny'));
 // app.use(flash());
 // app.use(passport.initialize());
 // app.use(passport.session());
-// app.use(express.static('public'));
+app.use(express.static('public'));
 
 /////////////////////ROUTES///////////////////////
 app.get('/', function(req,res) {
