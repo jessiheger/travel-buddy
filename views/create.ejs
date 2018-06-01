@@ -1,53 +1,54 @@
-    <h3>New Post</h3>
-    <div class="container">
-        <form>
+<h3>New Post</h3>
+<div class="container">
+<form id="createPost">
   <div class="form-row">
     <div class="form-group col-md-6">
       <label for="name">First Name</label>
-      <input type="text" class="form-control" id="iname" placeholder="First Name" required>
+
+      <input type="text" class="form-control" name="firstName" placeholder="First Name">
     </div>
     <div class="form-group col-md-6">
       <label for="city">City</label>
-      <input type="text" class="form-control" id="city" placeholder="City" required>
+      <input type="text" class="form-control" name="city" placeholder="City">
     </div>
   </div>
   <div class="form-row">
     <div class="form-group col-md-6">
       <label for="inputState">Activity Type</label>
-        <select id="inputState" class="form-control" required>
-            <option selected onchange="inputOther()">Outdoors</option>
-            <option>Culture</option>
-            <option>Food</option>
-            <option>Entertainment</option>
-            <option>Other</option>
+        <select id="inputState" name='activityType' class="form-control">
+            <option selected onchange="inputOther()" value='outdoors'>Outdoors</option>
+            <option value='culture'>Culture</option>
+            <option value='food'>Food</option>
+            <option value='entertainment'>Entertainment</option>
+            <option value='other'>Other</option>
       </select>
     </div>
       <div class="form-group col-md-6">
         <label for="otherActivity">Enter your Activity Type</label>
-        <input type="text" class="form-control" id="otherActivity" placeholder="History" required>
+        <input type="text" class="form-control" name="otherActivity" placeholder="History">
       </div>
     </div>
   <div class="form-group">
     <label for="description">Activity Description</label>
-    <input type="text" class="form-control" id="description" placeholder="A week-long food tour of Sri Lanka." required>
+    <input type="text" class="form-control" name="activityDescription" placeholder="A week-long food tour of Sri Lanka.">
   </div>
   <div class="form-group">
     <label for="contactMethod">Best way to contact me</label>
-    <input type="text" class="form-control" id="contactMethod" placeholder="WhatsApp me! +1 555-555-5555" required>
+    <input type="text" class="form-control" name="methodOfContact" placeholder="WhatsApp me! +1 555-555-5555">
   </div>
   <div class="form-row">
     <div class="form-group col-md-6">
       <label for="language">Language</label>
-      <input type="text" class="form-control" id="language" required>
+      <input type="text" class="form-control" name="language">
     </div>
     <div class="form-group col-md-4">
       <label for="inputState">Age Range</label>
-      <select id="inputState" class="form-control">
-        <option selected>All ages</option>
-        <option >Below 21</option>
-        <option>21-30</option>
-        <option>31-40</option>
-        <option>40 and Above</option>
+      <select id="inputState" name='ageRange' class="form-control">
+        <option selected value='All ages'>All ages</option>
+        <option value='Below 21'>Below 21</option>
+        <option value='21-30'>21-30</option>
+        <option value='31-40'>31-40</option>
+        <option value='40 and Above'>40 and Above</option>
       </select>
     </div>
     <div class="form-group col-md-6">
@@ -59,6 +60,6 @@
       <input type="date" class="form-control" placeholder="DD/MM/YY" name="endDate" id="endDate">
     </div>
   </div>
-  <button type="submit" class="btn btn-primary">Sign in</button>
+  <button form='createPost' type="submit" class="btn btn-primary">Post</button>
 </form>
     </div>
