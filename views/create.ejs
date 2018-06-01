@@ -3,9 +3,9 @@
 <form id="createPost">
   <div class="form-row">
     <div class="form-group col-md-6">
-      <label for="name">First Name</label>
+      <label for="name">First Name *</label>
 
-      <input type="text" class="form-control" name="firstName" placeholder="First Name">
+      <input type="text" class="form-control" name="firstName" placeholder="First Name" required>
     </div>
     <div class="form-group col-md-6">
       <label for="city">City</label>
@@ -14,32 +14,31 @@
   </div>
   <div class="form-row">
     <div class="form-group col-md-6">
-      <label for="inputState">Activity Type</label>
-        <select id="inputState" name='activityType' class="form-control">
+      <label for="inputState">Activity Type *</label>
+        <select id="inputState" name='activityType' class="form-control" required>
             <option selected onchange="inputOther()" value='outdoors'>Outdoors</option>
             <option value='culture'>Culture</option>
             <option value='food'>Food</option>
             <option value='entertainment'>Entertainment</option>
-            <option value='other'>Other</option>
       </select>
     </div>
       <div class="form-group col-md-6">
-        <label for="otherActivity">Enter your Activity Type</label>
+        <label for="otherActivity">Add a Custom Activity Type</label>
         <input type="text" class="form-control" name="otherActivity" placeholder="History">
       </div>
     </div>
   <div class="form-group">
-    <label for="description">Activity Description</label>
-    <input type="text" class="form-control" name="activityDescription" placeholder="A week-long food tour of Sri Lanka.">
+    <label for="description">Activity Description *</label>
+    <input type="text" class="form-control" name="activityDescription" placeholder="A week-long food tour of Sri Lanka." required>
   </div>
   <div class="form-group">
-    <label for="contactMethod">Best way to contact me</label>
-    <input type="text" class="form-control" name="methodOfContact" placeholder="WhatsApp me! +1 555-555-5555">
+    <label for="contactMethod">Best way to contact me *</label>
+    <input type="text" class="form-control" name="methodOfContact" placeholder="WhatsApp me! +1 555-555-5555" required>
   </div>
   <div class="form-row">
     <div class="form-group col-md-6">
-      <label for="language">Language</label>
-      <input type="text" class="form-control" name="language">
+      <label for="language">Language *</label>
+      <input type="text" class="form-control" name="language" required>
     </div>
     <div class="form-group col-md-4">
       <label for="inputState">Age Range</label>
