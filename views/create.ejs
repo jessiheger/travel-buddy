@@ -1,4 +1,3 @@
-<body>
     <h3>New Post</h3>
     <div class="container">
         <form>
@@ -16,12 +15,17 @@
     <div class="form-group col-md-6">
       <label for="inputState">Activity Type</label>
         <select id="inputState" class="form-control">
-            <option selected>Outdoors</option>
-            <option>Water-based</option>
-            <option>Food</option>
+            <option selected onchange="inputOther()">Outdoors</option>
             <option>Culture</option>
+            <option>Food</option>
+            <option>Entertainment</option>
+            <option>Other</option>
       </select>
     </div>
+      <div class="form-group col-md-6">
+        <label for="otherActivity">Enter your Activity Type</label>
+        <input type="text" class="form-control" id="otherActivity" placeholder="History">
+      </div>
     </div>
   <div class="form-group">
     <label for="description">Activity Description</label>
@@ -58,4 +62,3 @@
   <button type="submit" class="btn btn-primary">Sign in</button>
 </form>
     </div>
-</body>
