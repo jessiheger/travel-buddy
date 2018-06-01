@@ -37,8 +37,8 @@ app.get('/create', function(req,res) {
 	res.render('create');
 })
 
-app.get('/results', function(req,res) {
-	res.render('results', {results: 'results'});
+app.get('/:location', function(req,res) {
+	res.render('results', {results: req.params.location});
 })
 
 // app.use('/auth', require('./routes/auth'));
