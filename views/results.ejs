@@ -1,0 +1,36 @@
+<div class="jumbotron"></div>
+<% if (posts === '' || posts === [] || posts === {}) { %>
+	<div class="container">
+		<p>No posts for <%= location %></p>
+	</div>
+<% } else { %>
+	<% posts.forEach(post => { %>
+		<div class="container">
+			<h2><%= post.firstName %></h2>
+			<ul>
+				<li>
+					<p>Activity types: 
+						<% post.activityType.forEach(activity => { %>
+							<%= activity %>
+						<% }) %>
+					</p>
+				</li>
+				<li>
+					<p>Activity description: <%= post.activityDescription %></p>
+				</li>
+				<li>
+					<p>Method of Contact: <%= post.methodOfContact %></p>
+				</li>
+				<li>
+					<p>Language: <%= post.language %></p>
+				</li>
+				<li>
+					<p>Age range: <%= post.ageRange %></p>
+				</li>
+				<li>
+					<p>Dates: <%= post.startDate %> - <%= post.endDate %></p>
+				</li>
+			</ul>
+		</div>
+	<% }) %>
+<% } %>

@@ -3,30 +3,21 @@ require('dotenv').config(); //loads the .env
 var express        = require('express');
 var expressLayouts = require('express-ejs-layouts');
 var bodyParser     = require('body-parser');
-// var flash          = require('connect-flash');
 var mongoose       = require('mongoose');
 var morgan         = require('morgan');
-// var User           = require('./models/user');
+var Post           = require('./models/post');
 var app            = express();
 
 ///////////////CONNECT TO DATABASE////////////////
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/travelBuddy');
+// mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/travelBuddy');
+mongoose.connect('mongodb://localhost/travelBuddy');
 
 ////////////////SET & USE MODULES/////////////////
 app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(expressLayouts);
 app.use(morgan('tiny'));
-// app.use(session({
-// 	secret:            process.env.SESSION_SECRET,
-// 	resave:            false,
-// 	//saveUninitialized: true
-// 	saveUninitialized: false
-// }));
-// app.use(flash());
-// app.use(passport.initialize());
-// app.use(passport.session());
-// app.use(express.static('public'));
+app.use(express.static('public'));
 
 /////////////////////ROUTES///////////////////////
 app.get('/', function(req,res) {
@@ -38,12 +29,16 @@ app.get('/create', function(req,res) {
 })
 
 app.get('/:location', function(req,res) {
-	res.render('results', {results: req.params.location});
-})
-
-// app.use('/auth', require('./routes/auth'));
-// app.use('/search', require('./routes/search'));
-// app.use('/profile', require('./routes/profile'));
+	console.log(req.params.location);
+	Post.find({'city': req.params.location}, function(err, posts) {
+		if (err) { 
+			console.log('error getting posts for', req.params.location, '\n' + err)
+			res.render('results', {posts: '', location: req.params.location});
+		}
+		console.log(posts, typeof posts);
+		res.render('results', {posts: posts, location: req.params.location});
+	});
+});
 
 app.use(function(req, res){
     res.status(404).render('404');
