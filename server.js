@@ -24,17 +24,17 @@ app.use(express.static('public'));
 /////////////////////ROUTES///////////////////////
 app.get('/', function(req,res) {
 	res.render('welcome');
-})
+});
 
 app.get('/create', function(req,res) {
 	res.render('create');
-})
-	//check if other empty
+});
+
 app.post('/create', function(req, res) {
 	let activities = [];
 	let newPost = new Post();
 	let city = req.body.city.toLowerCase()
-	// city.replace(/' '/g, '');
+	// city.replace(/\s|-/g, '');
 	activities.push(req.body.activityType);
 	if (req.body.otherActivity !== '') { activities.push(req.body.otherActivity); }
 	newPost.firstName = req.body.firstName;
@@ -53,7 +53,18 @@ app.post('/create', function(req, res) {
 		}
 	});
 	res.send(newPost);
-})
+});
+
+app.post('/:location/reply/:post', function(req, res) {
+	Post.find({'city': req.params.location}, function(err, posts) {
+		if (err) { 
+			console.log('error getting posts for', req.params.location, '\n' + err)
+			res.render('results', {posts: '', location: req.params.location});
+		}
+		res.send('temp');
+		
+	})
+});
 
 app.get('/:location', function(req,res) {
 	// console.log(req.params.location);
@@ -67,7 +78,7 @@ app.get('/:location', function(req,res) {
 });
 
 app.use(function(req, res){
-    res.status(404).render('404');
+    res.status(404).send('404');
 });
 
 ////////////////////LISTENING/////////////////////

@@ -6,16 +6,16 @@ const commentSchema = new mongoose.Schema ({
 });
 
 const postSchema = new mongoose.Schema ({
-	firstName: 				{type: String, required: true}
-  	,city:           		{type: String, required: true}
-  	,activityType: 			{type: [String], required: true}
+	firstName: 				        {type: String, required: true}
+  	,city:              		{type: String, required: true}
+  	,activityType: 	     		{type: [String], required: true}
   	,activityDescription: 	{type: String, required: true}
-  	,methodOfContact: 		{type: String, required: true}
-  	,language: 				{type: String, required: true}
-  	,ageRange: 				String
-  	,startDate: 			String
-  	,endDate: 				String
-  	,comments: 				[commentSchema]
+  	,methodOfContact: 		  {type: String, required: true}
+  	,language: 				      {type: String, required: true}
+  	,ageRange: 			       	String
+  	,startDate: 			      String
+  	,endDate: 				      String
+  	,comments: 				      [commentSchema]
 });
 
 
