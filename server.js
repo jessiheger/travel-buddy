@@ -9,16 +9,14 @@ var Post           = require('./models/post');
 var app            = express();
 
 ///////////////CONNECT TO DATABASE////////////////
-// mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/travelBuddy');
-mongoose.connect('mongodb://localhost/travelBuddy');
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/travelBuddy');
+// mongoose.connect('mongodb://localhost/travelBuddy');
 
 ////////////////SET & USE MODULES/////////////////
 app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(expressLayouts);
 app.use(morgan('tiny'));
-
-
 app.use(express.static('public'));
 
 /////////////////////ROUTES///////////////////////
@@ -33,10 +31,13 @@ app.get('/create', function(req,res) {
 app.post('/create', function(req, res) {
 	let activities = [];
 	let newPost = new Post();
-	let city = req.body.city.toLowerCase()
-	// city.replace(/\s|-/g, '');
-	activities.push(req.body.activityType);
-	if (req.body.otherActivity !== '') { activities.push(req.body.otherActivity); }
+	let city = req.body.city.replace(/\s|-/g, '').toLowerCase();
+	if (req.body.activityType !== '') { activities.push(req.body.activityType) };
+	if (req.body.otherActivity !== '') { activities.concat(req.body.otherActivity.split(', ')); }
+	//also add ALL ACTIVITIES db and autopopulate activities dropdown menu with all options
+	//check for duplicates from ALL ACTIVITIES db
+	activities = activities.filter((activity, i) => activities.indexOf(activity) === i);
+
 	newPost.firstName = req.body.firstName;
 	newPost.city = city;
 	newPost.activityType = activities;
@@ -46,6 +47,7 @@ app.post('/create', function(req, res) {
 	newPost.ageRange = req.body.ageRange;
 	newPost.startDate = req.body.startDate;
 	newPost.endDate = req.body.endDate;
+
 	newPost.save(function(err) {
 		if (err) {
 			console.log('######## error saving post to db:\n', err);
@@ -62,7 +64,7 @@ app.post('/:location/reply/:post', function(req, res) {
 			res.render('results', {posts: '', location: req.params.location});
 		}
 		res.send('temp');
-		
+		// ...
 	})
 });
 
