@@ -17,8 +17,6 @@ app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(expressLayouts);
 app.use(morgan('tiny'));
-
-
 app.use(express.static('public'));
 
 /////////////////////ROUTES///////////////////////

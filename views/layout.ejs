@@ -6,8 +6,11 @@
    <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.44.1/mapbox-gl.js'></script>
    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.44.1/mapbox-gl.css' rel='stylesheet' />
+   <!-- BOOTSTRAP CSS FILE -->
+      <link rel="stylesheet" type="text/css" href="../styles/bootstrap.css">
+   <!-- END BOOTSTRAP CSS FILE -->
    <link rel="stylesheet" type="text/css" href="../styles/style.css">
-   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+   <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous"> -->
    <link href="https://fonts.googleapis.com/css?family=Shadows+Into+Light" rel="stylesheet">
    <!-- <link rel="icon" type="image/png" href="../images/icon.png"> -->
  </head>
@@ -20,8 +23,17 @@
    <div id="map" hidden>
    </div>
    <% include partials/footer %>
-   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+   
+   <script src="//ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+   <!-- <script>window.jQuery || document.write('<script src="../scripts/bootstrap.js">\x3C/script>')</script>  LEAVE AS BACKUP-->
    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+   <script>
+     if (! $.fn.modal) {
+       document.write('<script src="../scripts/bootstrap.js"></scri'+'pt>');
+       document.write('<link rel="stylesheet" href="../styles/bootstrap.css">');
+     }
+   </script>
+
    <script src="../scripts/app.js"></script>
    <!-- <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.44.1/mapbox-gl.js'></script> -->
  </body>
